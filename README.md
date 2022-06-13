@@ -1,7 +1,5 @@
 # Slot game
 
-## Project description
-
 ## Run gmae
 Install dependencies:
 ```
