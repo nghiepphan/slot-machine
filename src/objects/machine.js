@@ -1,4 +1,5 @@
 import Reel from './reel';
+import Announcement from './announcement';
 
 export default class Machine {
 	constructor(scene, x, y, config, payTable) {
@@ -19,10 +20,6 @@ export default class Machine {
 	}
 
 	_addElements(scene, config) {
-		// scene.add
-		// 	.sprite(this.x + 15, this.y + this.config.height - 35, this.config.atlasName, this.config.sprites.left)
-		// 	.setOrigin(0.5);
-
 		// reel - white color
 		scene.add.sprite(this.x + 64, this.y + 80, 'slot-machine-option-background', this.config.sprites.top).setOrigin(0);
 		// slow machine box
@@ -40,7 +37,13 @@ export default class Machine {
 			.setOrigin(0)
 			.setScale(0.98);
 
-		// scene.add.sprite(this.x, this.y, this.config.atlasName, this.config.sprites.top).setOrigin(0);
+		// add bg tiki ball
+		scene.add
+			.sprite(this.x + this.config.width - 50, this.y + this.config.height - 30, 'bg-tiki-ball', this.config.sprites.top)
+			.setOrigin(0)
+			.setScale(1);
+
+		this._renderAnnouncements();
 	}
 
 	_fillWithReels(scene, count, config) {
@@ -146,6 +149,10 @@ export default class Machine {
 			yoyo: true,
 			onComplete: () => graphics.destroy(),
 		});
+	}
+
+	_renderAnnouncements() {
+		new Announcement(this.scene, this.x, this.y);
 	}
 
 	setResultSlots(resultSlots) {

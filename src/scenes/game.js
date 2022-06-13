@@ -22,12 +22,17 @@ export default class GameScene extends Scene {
 	}
 
 	_addBackground() {
-		// this.add.image(0, 0, 'background').setOrigin(0);
+		// add main background
 		const image = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'background');
 		const scaleX = this.cameras.main.width / image.width;
 		const scaleY = this.cameras.main.height / image.height;
 		const scale = Math.max(scaleX, scaleY);
 		image.setScale(scale).setScrollFactor(0);
+		// add coin on main background: asa coin, tiki ball, ...
+		const bgAsaCoin = this.add.image(4, 150, 'bg-asa-coin');
+		bgAsaCoin.setY(150 + bgAsaCoin.height / 2);
+		const bgAsaCoinBlur = this.add.image(config.size.width, 30, 'bg-asa-coin-blur');
+		bgAsaCoinBlur.setY(30 + bgAsaCoinBlur.height / 2);
 	}
 
 	_addSlotMachine() {
@@ -45,9 +50,7 @@ export default class GameScene extends Scene {
 		this.spinButton = new Button(
 			this,
 			config.size.centerX + config.game.spinButtonOffset.x,
-			config.size.centerY + config.game.spinButtonOffset.y,
-			config.game.atlasName,
-			config.game.sprites.spinButton
+			config.size.centerY + config.game.spinButtonOffset.y
 		);
 		this.spinButton.on('pointerup', () => this._runMachine());
 	}

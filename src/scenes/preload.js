@@ -14,6 +14,10 @@ export default class PreloadScene extends Scene {
 
 		// load assets
 		this.load.image('background', `${ROOT_ASSET_URL}/background.png`);
+		this.load.image('bg-asa-coin-blur', `${ROOT_ASSET_URL}/background/asa-coin-blur.png`);
+		this.load.image('bg-asa-coin', `${ROOT_ASSET_URL}/background/asa-coin.png`);
+		this.load.image('bg-tiki-ball', `${ROOT_ASSET_URL}/background/tiki-ball.png`);
+
 		this.load.image('slot-machine', `${ROOT_ASSET_URL}/slot-machine.png`);
 		this.load.image('slot-machine-handle', `${ROOT_ASSET_URL}/btns/btn-spin.png`);
 		this.load.image('slot-machine-handle-pressed', `${ROOT_ASSET_URL}/btns/btn-spin-pressed.png`);
@@ -22,6 +26,9 @@ export default class PreloadScene extends Scene {
 		// box-shadow 2 parts
 		this.load.image('reel-overlay-top', `${ROOT_ASSET_URL}/reel-overlay-top.png`);
 		this.load.image('reel-overlay-bottom', `${ROOT_ASSET_URL}/reel-overlay-bottom.png`);
+
+		// announcement
+		this.load.image('ic-speaker', `${ROOT_ASSET_URL}/speaker.png`);
 
 		// load symbols
 		for (let optionIdKey in OptionId) {
