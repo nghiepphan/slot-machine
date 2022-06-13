@@ -20,12 +20,18 @@ export default class Button extends GameObjects.Sprite {
 		});
 
 		scene.input.on('pointerup', () => {
-			this.setTexture('slot-machine-handle-pressed');
 			this.setScale(1);
+			this._setPressedButton();
+		});
+	}
+
+	_setPressedButton() {
+		if (this.disabled === true) {
+			this.setTexture('slot-machine-handle-pressed');
 			setTimeout(() => {
 				this.setTexture('slot-machine-handle');
-			}, 100);
-		});
+			}, 300);
+		}
 	}
 
 	disable() {

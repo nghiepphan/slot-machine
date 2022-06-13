@@ -63,6 +63,16 @@ export default class Machine {
 			console.log('>>>> TODO: fetch api successfully!'); //TODO: to-remove
 			this._stopSpin();
 		}, this.config.stopDelay);
+
+		// play music
+		this._playClickSpinSound();
+	}
+
+	_playClickSpinSound() {
+		this.scene.sound.add('music-click-spin').play();
+		setTimeout(() => {
+			this.scene.sound.add('music-playing').play();
+		}, 300);
 	}
 
 	_stopSpin() {

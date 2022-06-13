@@ -1,22 +1,24 @@
 import { getOptionValueAsArray } from './option-id';
 
-const gameWidth = window.innerWidth;
-const gameHeight = window.innerHeight;
+const isMobile = window.innerWidth >= 375;
+const headerHeight = 76;
+const screenWidth = isMobile ? window.innerWidth : 375;
+const screenHeight = isMobile ? window.innerHeight : window.innerHeight - headerHeight;
 
 const config = {
 	phaser: {
-		width: gameWidth,
-		height: gameHeight,
+		width: screenWidth,
+		height: screenHeight,
 		backgroundColor: '000000',
 	},
 	size: {
 		minWidht: 800,
 		minHeight: 600,
 		zoom: 1,
-		centerX: gameWidth / 2,
-		centerY: gameHeight / 2,
-		width: gameWidth,
-		height: gameHeight,
+		centerX: screenWidth / 2,
+		centerY: screenHeight / 2,
+		width: screenWidth,
+		height: screenHeight,
 		grafics: 'Big',
 	},
 	game: {
@@ -48,7 +50,7 @@ const config = {
 			slotsCount: 3,
 			// TODO: check with condition at _move in reel component
 			// speed: 20,
-			speed: 18,
+			speed: 9,
 			// slotSize: 100,
 			slotSize: 72,
 		},
@@ -61,7 +63,7 @@ const config = {
 			// reelsFirstOffset: 0,
 			// reelsOffset: 32.5,
 			reelsOffset: 0,
-			stopDelay: 2000, // ms
+			stopDelay: 10500, // ms
 			reelStopDelay: 500, // ms
 			atlasName: 'atlas',
 			sprites: {
@@ -128,6 +130,9 @@ const config = {
 			atlas: 'atlas',
 			sprite: 'debug',
 		},
+	},
+	sound: {
+		allow: true,
 	},
 };
 

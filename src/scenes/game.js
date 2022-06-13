@@ -13,11 +13,21 @@ export default class GameScene extends Scene {
 	init() {
 		this.balance = config.payTable.startBalance;
 
+		this._addBackground();
 		this._addSlotMachine();
 		// this._addBalanceBlock();
 		this._addSpinButton();
 		// this._addPayTable();
 		// this._addDebugBar();
+	}
+
+	_addBackground() {
+		// this.add.image(0, 0, 'background').setOrigin(0);
+		const image = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'background');
+		const scaleX = this.cameras.main.width / image.width;
+		const scaleY = this.cameras.main.height / image.height;
+		const scale = Math.max(scaleX, scaleY);
+		image.setScale(scale).setScrollFactor(0);
 	}
 
 	_addSlotMachine() {
@@ -44,7 +54,7 @@ export default class GameScene extends Scene {
 
 	_runMachine() {
 		if (!this.machine.locked) {
-			// this.machine.setResultSlots(this.debugBar.debugSlots)
+			// this.machine.setResultSlots(this.debugBar.debugSlots) //TODO: to-remove
 			this.machine.startSpin();
 			this.spinButton.disable();
 

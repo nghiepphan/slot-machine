@@ -13,6 +13,7 @@ export default class PreloadScene extends Scene {
 		this.load.bitmapFont('freedom', './assets/font.png', './assets/font.fnt');
 
 		// load assets
+		this.load.image('background', `${ROOT_ASSET_URL}/background.png`);
 		this.load.image('slot-machine', `${ROOT_ASSET_URL}/slot-machine.png`);
 		this.load.image('slot-machine-handle', `${ROOT_ASSET_URL}/btns/btn-spin.png`);
 		this.load.image('slot-machine-handle-pressed', `${ROOT_ASSET_URL}/btns/btn-spin-pressed.png`);
@@ -22,9 +23,14 @@ export default class PreloadScene extends Scene {
 		this.load.image('reel-overlay-top', `${ROOT_ASSET_URL}/reel-overlay-top.png`);
 		this.load.image('reel-overlay-bottom', `${ROOT_ASSET_URL}/reel-overlay-bottom.png`);
 
+		// load symbols
 		for (let optionIdKey in OptionId) {
 			this.load.image(optionIdKey, `${ROOT_ASSET_URL}/slot-symbols/${optionIdKey}.png`);
 		}
+
+		// load music
+		this.load.audio('music-click-spin', `${ROOT_ASSET_URL}/music/spin.wav`);
+		this.load.audio('music-playing', `${ROOT_ASSET_URL}/music/playing.wav`);
 	}
 
 	init() {
