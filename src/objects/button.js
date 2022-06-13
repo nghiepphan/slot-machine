@@ -21,7 +21,6 @@ export default class Button extends GameObjects.Sprite {
 
 		scene.input.on('pointerup', () => {
 			this.setScale(1);
-			this._setPressedButton();
 		});
 	}
 
@@ -36,6 +35,7 @@ export default class Button extends GameObjects.Sprite {
 
 	disable() {
 		// this.setTint('0x464646');
+		this._setPressedButton();
 		this.disabled = true;
 	}
 
