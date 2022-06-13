@@ -4,10 +4,10 @@ export default class BootScene extends Scene {
     constructor() { super({ key: 'Boot' }) }
 
     preload() {
-        this.load.image('logo', './assets/logo.png')
+        this.load.image('logo', './assets/loading.png')
     }
 
-    create(){   
+    create(){
         this.scene.start('Preload')
     }
 
