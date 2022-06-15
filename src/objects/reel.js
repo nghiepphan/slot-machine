@@ -2,11 +2,14 @@ import { GameObjects } from 'phaser';
 import Slot from './slot';
 
 export default class Reel extends GameObjects.Container {
-	constructor(scene, x, y, config, slots) {
+	constructor(scene, x, y, config, slots, index, count) {
 		super(scene, x, y - config.height / 2);
 
 		this.scene = scene;
 		scene.add.existing(this);
+
+		this.index = index;
+		this.count = count;
 
 		this._init(scene, config, slots);
 	}
@@ -60,6 +63,11 @@ export default class Reel extends GameObjects.Container {
 					this.rotating.remove();
 					this.slowdown = false;
 					this.updSlotCount = 0;
+					if (this.index === this.count - 1) {
+						setTimeout(() => {
+							this.scene.popup.toggleMessagePopup(true);
+						}, 500);
+					}
 				}
 			}
 			this.result[this.updSlotCount] = slot.update(updateVal);

@@ -4,13 +4,15 @@ import Machine from '../objects/machine';
 import Button from '../objects/button';
 import PayTable from '../objects/payTable';
 import DebugBar from '../objects/debugBar';
+import Popup from './../objects/popup';
 
 export default class GameScene extends Scene {
 	constructor() {
 		super({ key: 'Game' });
 	}
 
-	init() {
+	init(data) {
+		this.data.set('prizes', data.prizes);
 		this.balance = config.payTable.startBalance;
 
 		this._addBackground();
@@ -19,6 +21,7 @@ export default class GameScene extends Scene {
 		this._addSpinButton();
 		// this._addPayTable();
 		// this._addDebugBar();
+		this._addPopup();
 	}
 
 	_addBackground() {
@@ -123,6 +126,11 @@ export default class GameScene extends Scene {
 
 	_addDebugBar() {
 		this.debugBar = new DebugBar(this, config);
+	}
+
+	_addPopup() {
+		const popup = new Popup(this, this.x, this.y);
+		this.popup = popup;
 	}
 
 	update() {

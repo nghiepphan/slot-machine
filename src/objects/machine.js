@@ -63,7 +63,7 @@ export default class Machine {
 			if (i) {
 				x += config.reel.width + this.config.reelsOffset;
 			}
-			this.reels.push(new Reel(scene, x, y, config.reel, config.slots));
+			this.reels.push(new Reel(scene, x, y, config.reel, config.slots, i, count));
 		}
 	}
 
@@ -80,26 +80,11 @@ export default class Machine {
 		this._playClickSpinSound();
 	}
 
-	_playClickSpinSound() {
-		this.scene.sound.add('music-click-spin').play();
-		setTimeout(() => {
-			this.scene.sound.add('music-playing').play();
-		}, 300);
-	}
-
 	// TODO: fetch api here & check timeout
 	_stopSpin() {
 		setTimeout(() => this._finish(), this.config.reelStopDelay * this.reels.length);
 		const mockResult = getRandomResult();
 		this.setResultSlots(mockResult);
-		console.log(
-			'>>>> TODO: fetch api successfully! ==> return data: ',
-			mockResult[0][1],
-			' - ',
-			mockResult[1][1],
-			' - ',
-			mockResult[2][1]
-		); //TODO: to-remove
 		this.reels.forEach((reel, i) => {
 			reel.stopSpin(this.resultSlots[i], this.config.reelStopDelay * i);
 		});
@@ -168,6 +153,13 @@ export default class Machine {
 
 	_renderAnnouncements() {
 		new Announcement(this.scene, this.x, this.y);
+	}
+
+	_playClickSpinSound() {
+		this.scene.sound.add('music-click-spin').play();
+		setTimeout(() => {
+			this.scene.sound.add('music-playing').play();
+		}, 300);
 	}
 
 	setResultSlots(resultSlots) {

@@ -7,10 +7,12 @@ export default class Slot extends GameObjects.Sprite {
 	}
 
 	_init(slots, slot) {
+		const prizes = this.scene.data.get('prizes');
+		const values = prizes.map((x) => `prize-${x.id}`);
 		this.setOrigin(0.5, 1);
 		// this.setScale(0.85);
 		this.setScale(1);
-		this.slots = slots.slotsList;
+		this.slots = values;
 		this.update(slot);
 	}
 
@@ -18,7 +20,7 @@ export default class Slot extends GameObjects.Sprite {
 		if (!slot) {
 			slot = Utils.Array.GetRandom(this.slots);
 		}
-		this.setTexture(slot);
+		this.setTexture(slot).setDisplaySize(72, 72);
 		// this.setFrame(slot);
 		// return slot;
 	}

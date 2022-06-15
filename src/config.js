@@ -39,7 +39,8 @@ const config = {
 		},
 		slots: {
 			atlasName: 'atlas',
-			slotsList: [...getOptionValueAsArray()],
+			// slotsList: [...getOptionValueAsArray()],
+			slotsList: [],
 		},
 		reel: {
 			// width: 220,

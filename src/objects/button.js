@@ -3,6 +3,7 @@ import { GameObjects } from 'phaser';
 export default class Button extends GameObjects.Sprite {
 	constructor(scene, x, y) {
 		super(scene, x, y, 'slot-machine-handle');
+		this.scene = scene;
 
 		scene.add.existing(this);
 
@@ -10,9 +11,7 @@ export default class Button extends GameObjects.Sprite {
 		this.disabled = false;
 
 		this.on('pointerdown', () => {
-			if (this.disabled) {
-				this.setScale(0.95);
-			}
+			this._setPressedButton();
 		});
 		this.on('pointerout', () => {
 			this.setScale(1);
@@ -20,15 +19,16 @@ export default class Button extends GameObjects.Sprite {
 
 		scene.input.on('pointerup', () => {
 			this.setScale(1);
-			this._setPressedButton();
 		});
 	}
 
 	_setPressedButton() {
-		this.setTexture('slot-machine-handle-pressed');
-		setTimeout(() => {
-			this.setTexture('slot-machine-handle');
-		}, 300);
+		if (this.disabled == false) {
+			this.setTexture('slot-machine-handle-pressed');
+			setTimeout(() => {
+				this.setTexture('slot-machine-handle');
+			}, 300);
+		}
 	}
 
 	disable() {

@@ -13,18 +13,18 @@ export const OptionId = {
 };
 
 // find index
-export function getOptionIdIndex(optionId) {
-  return getOptionIdAsArray().findIndex(([key]) => OptionId[key] === optionId);
-}
+// export function getOptionIdIndex(optionId) {
+//   return getOptionIdAsArray().findIndex(([key]) => OptionId[key] === optionId);
+// }
 
-export function getOptionIdAsArray() {
-  return Object.entries(OptionId);
-}
+// export function getOptionIdAsArray() {
+//   return Object.entries(OptionId);
+// }
 
-export function getOptionIdAmount() {
-  return getOptionIdAsArray().length;
-}
+// export function getOptionIdAmount() {
+//   return getOptionIdAsArray().length;
+// }
 
-export function getOptionValueAsArray() {
-  return Object.values(OptionId);
-}
+// export function getOptionValueAsArray() {
+//   return Object.values(OptionId);
+// }

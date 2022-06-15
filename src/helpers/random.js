@@ -4,40 +4,49 @@ export function getRandomIntBetween(min, max) {
 
 const data = [
 	[
-		[0, 'APPLE', 0],
-		[0, 'APPLE', 0],
-		[0, 'APPLE', 0],
+		[0, 'prize-1', 0],
+		[0, 'prize-1', 0],
+		[0, 'prize-1', 0],
 	],
 	[
-		[0, 'DIAMOND', 0],
-		[0, 'DIAMOND', 0],
-		[0, 'DIAMOND', 0],
+		[0, 'prize-2', 0],
+		[0, 'prize-2', 0],
+		[0, 'prize-2', 0],
 	],
 	[
-		[0, 'APPLE', 0],
-		[0, 'NGON', 0],
-		[0, 'ORANGE', 0],
+		[0, 'prize-3', 0],
+		[0, 'prize-4', 0],
+		[0, 'prize-5', 0],
 	],
 	[
-		[0, 'SEP', 0],
-		[0, 'WATERMELON', 0],
-		[0, 'WATERMELON', 0],
+		[0, 'prize-6', 0],
+		[0, 'prize-2', 0],
+		[0, 'prize-2', 0],
 	],
 	[
-		[0, 'WIN', 0],
-		[0, 'WIN', 0],
-		[0, 'WIN', 0],
+		[0, 'prize-7', 0],
+		[0, 'prize-7', 0],
+		[0, 'prize-7', 0],
 	],
 	[
-		[0, 'LUCKYTIKI', 0],
-		[0, 'LUCKYTIKI', 0],
-		[0, 'LUCKYTIKI', 0],
+		[0, 'prize-8', 0],
+		[0, 'prize-8', 0],
+		[0, 'prize-8', 0],
 	],
 ];
 
 export function getRandomResult() {
 	const randomInt = getRandomIntBetween(0, 5);
-	return data[randomInt];
+	const mockResult = data[randomInt];
+	console.log(
+		'>>>> TODO: fetch api successfully! ==> return data: ',
+		mockResult[0][1],
+		' - ',
+		mockResult[1][1],
+		' - ',
+		mockResult[2][1]
+	); //TODO: to-remove
+	return mockResult;
 }
 
 export default getRandomIntBetween;

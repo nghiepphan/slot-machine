@@ -62,14 +62,15 @@ export default class Announcement {
 				this._loadData();
 			}, 1000);
 		}
-		const content = this.announcements.join('          ');
+		const content = this.announcements.join('                    ');
 		const text = this.scene.add
-			.text(this.x + this.displayWidth / 2, this.y - 6, content, {
+			.text(this.x + this.displayWidth / 2, this.y - 8, content, {
 				fontSize: '12px',
 				color: '#DBEEFF',
 				fontFamily: 'Inter',
 				fontWeight: 600,
 			})
+			.setDepth(0)
 			.setOrigin(0);
 
 		const to = this.x - this.displayWidth / 2 - text.width;
