@@ -2,7 +2,7 @@ import { GameObjects } from 'phaser';
 import { asaValueGiftBoxMapper } from './../helpers/valueMapper';
 
 const Depth = 9999;
-const textColor = '#EBEBF0';
+const defaultTextColor = '#EBEBF0';
 const highlightTextColor = '#FFD530';
 export default class Popup extends GameObjects.Sprite {
 	constructor(scene, x, y) {
@@ -26,7 +26,7 @@ export default class Popup extends GameObjects.Sprite {
 	_createPopup() {
 		// backdrop
 		const isHighlighted = this.data.asaValue >= 1000;
-		const textColor = isHighlighted ? highlightTextColor : textColor;
+		const textColor = isHighlighted ? highlightTextColor : defaultTextColor;
 		this.backdrop = this.scene.add
 			.rectangle(
 				this.scene.game.canvas.width * 0.5,
