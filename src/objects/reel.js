@@ -1,4 +1,4 @@
-import { GameObjects, Math } from 'phaser';
+import { GameObjects } from 'phaser';
 import Slot from './slot';
 
 export default class Reel extends GameObjects.Container {

@@ -28,11 +28,13 @@ export default class PreloadScene extends Scene {
 		this.load.image('reel-overlay-bottom', `${ROOT_ASSET_URL}/reel-overlay-bottom.png`);
 
 		// announcement
-		this.load.image('ic-speaker', `${ROOT_ASSET_URL}/speaker.png`);
+		this.load.image('announcement-ic-speaker', `${ROOT_ASSET_URL}/announcements/speaker.png`);
+		this.load.image('announcement-frame', `${ROOT_ASSET_URL}/announcements/announcement-frame.png`);
+		this.load.image('announcement-shadow', `${ROOT_ASSET_URL}/announcements/announcement-shadow.png`);
 
 		// load symbols
 		for (let optionIdKey in OptionId) {
-			this.load.image(optionIdKey, `${ROOT_ASSET_URL}/slot-symbols/${optionIdKey}.png`);
+			this.load.image(optionIdKey, 'https://salt.tikicdn.com/ts/ta/82/27/65/bee563ba965e42f2e49d168072c0fa3c.png');
 		}
 
 		// load music

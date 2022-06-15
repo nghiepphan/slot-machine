@@ -1,5 +1,6 @@
 import Reel from './reel';
 import Announcement from './announcement';
+import { getRandomResult } from './../helpers/random';
 
 export default class Machine {
 	constructor(scene, x, y, config, payTable) {
@@ -22,8 +23,10 @@ export default class Machine {
 	_addElements(scene, config) {
 		// reel - white color
 		scene.add.sprite(this.x + 64, this.y + 80, 'slot-machine-option-background', this.config.sprites.top).setOrigin(0);
-		// slow machine box
-		scene.add.sprite(this.x, this.y - 16, 'slot-machine', this.config.sprites.bottom).setOrigin(0);
+		// slow machine box - slot-machine
+		const machineBox = scene.add.sprite(this.x, this.y - 16, 'slot-machine', this.config.sprites.bottom).setOrigin(0);
+		machineBox.displayWidth = machineBox.width / 2;
+		machineBox.displayHeight = machineBox.height / 2;
 		// render reels items
 		this._fillWithReels(scene, this.reelsCount, config);
 
@@ -39,10 +42,16 @@ export default class Machine {
 
 		// add bg tiki ball
 		scene.add
-			.sprite(this.x + this.config.width - 50, this.y + this.config.height - 30, 'bg-tiki-ball', this.config.sprites.top)
+			.sprite(
+				this.x + this.config.width - 50,
+				this.y + this.config.height - 30,
+				'bg-tiki-ball',
+				this.config.sprites.top
+			)
 			.setOrigin(0)
 			.setScale(1);
 
+		// announcement
 		this._renderAnnouncements();
 	}
 
@@ -78,13 +87,19 @@ export default class Machine {
 		}, 300);
 	}
 
+	// TODO: fetch api here & check timeout
 	_stopSpin() {
 		setTimeout(() => this._finish(), this.config.reelStopDelay * this.reels.length);
-		this.setResultSlots([
-			[0, 'LUCKYTIKI', 0],
-			[0, 'LUCKYTIKI', 0],
-			[0, 'LUCKYTIKI', 0],
-		]);
+		const mockResult = getRandomResult();
+		this.setResultSlots(mockResult);
+		console.log(
+			'>>>> TODO: fetch api successfully! ==> return data: ',
+			mockResult[0][1],
+			' - ',
+			mockResult[1][1],
+			' - ',
+			mockResult[2][1]
+		); //TODO: to-remove
 		this.reels.forEach((reel, i) => {
 			reel.stopSpin(this.resultSlots[i], this.config.reelStopDelay * i);
 		});
