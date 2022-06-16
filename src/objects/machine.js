@@ -1,5 +1,6 @@
 import Reel from './reel';
 import Announcement from './announcement';
+import HeaderAction from './buttons/HeaderAction';
 import { getRandomResult } from './../helpers/random';
 
 export default class Machine {
@@ -24,9 +25,11 @@ export default class Machine {
 		// reel - white color
 		scene.add.sprite(this.x + 64, this.y + 80, 'slot-machine-option-background', this.config.sprites.top).setOrigin(0);
 		// slow machine box - slot-machine
-		const machineBox = scene.add.sprite(this.x, this.y - 16, 'slot-machine', this.config.sprites.bottom).setOrigin(0);
-		machineBox.displayWidth = machineBox.width / 2;
-		machineBox.displayHeight = machineBox.height / 2;
+		const machineBox = scene.add
+			.sprite(this.x, this.y - 16, 'slot-machine', this.config.sprites.bottom)
+			.setOrigin(0)
+			.setScale(0.5);
+		this.machineBox = machineBox;
 		// render reels items
 		this._fillWithReels(scene, this.reelsCount, config);
 
@@ -53,6 +56,12 @@ export default class Machine {
 
 		// announcement
 		this._renderAnnouncements();
+
+		// rule button
+		this._renderListHeaderActions();
+		// ranking button
+		// mute-unmute sound
+		// balance
 	}
 
 	_fillWithReels(scene, count, config) {
@@ -151,15 +160,19 @@ export default class Machine {
 		});
 	}
 
-	_renderAnnouncements() {
-		new Announcement(this.scene, this.x, this.y);
-	}
-
 	_playClickSpinSound() {
 		this.scene.sound.add('music-click-spin').play();
 		setTimeout(() => {
 			this.scene.sound.add('music-playing').play();
 		}, 300);
+	}
+
+	_renderAnnouncements() {
+		new Announcement(this.scene, this.x, this.y);
+	}
+
+	_renderListHeaderActions() {
+		new HeaderAction(this.scene, this.x, this.y, this.machineBox.displayWidth);
 	}
 
 	setResultSlots(resultSlots) {

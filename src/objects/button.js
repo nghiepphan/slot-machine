@@ -7,7 +7,9 @@ export default class Button extends GameObjects.Sprite {
 
 		scene.add.existing(this);
 
-		this.setInteractive();
+		this.setInteractive({
+			useHandCursor: true,
+		});
 		this.disabled = false;
 
 		this.on('pointerdown', () => {

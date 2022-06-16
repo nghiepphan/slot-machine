@@ -89,15 +89,15 @@ export default class GameScene extends Scene {
 		// 	)
 		// 	.setOrigin(1, 0.5);
 
-		this.balanceText = this.add
-			.bitmapText(
-				config.size.centerX + config.game.balanceTextOffsetX,
-				config.size.centerY + config.game.balanceTextOffsetY,
-				'freedom',
-				`$ ${this.balance}`,
-				56
-			)
-			.setOrigin(0, 0.5);
+		// this.balanceText = this.add
+		// 	.bitmapText(
+		// 		config.size.centerX + config.game.balanceTextOffsetX,
+		// 		config.size.centerY + config.game.balanceTextOffsetY,
+		// 		'freedom',
+		// 		`$ ${this.balance}`,
+		// 		56
+		// 	)
+		// 	.setOrigin(0, 0.5);
 
 		this.add
 			.bitmapText(
@@ -115,9 +115,9 @@ export default class GameScene extends Scene {
 			console.log(sum);
 		}
 		this.balance += sum ? sum : this.balance;
-		if (this.balanceText) {
-			this.balanceText.setText(`$ ${this.balance}`);
-		}
+		// if (this.balanceText) {
+		// 	this.balanceText.setText(`$ ${this.balance}`);
+		// }
 	}
 
 	_addPayTable() {

@@ -41,7 +41,7 @@ export default class Popup extends GameObjects.Sprite {
 		this.box = this.scene.add
 			.image(
 				this.scene.game.canvas.width * 0.5,
-				this.scene.game.canvas.height * 0.5 - 200,
+				this.scene.game.canvas.height * 0.5 - 100,
 				asaValueGiftBoxMapper[this.data.asaValue]
 			)
 			.setScale(0.5)
@@ -141,7 +141,7 @@ export default class Popup extends GameObjects.Sprite {
 				useHandCursor: true,
 			})
 			.on('pointerup', (e) => {
-				this.toggleMessagePopup(false);
+				this._animateCoins();
 			});
 
 		this.toggleMessagePopup(false);
@@ -182,5 +182,38 @@ export default class Popup extends GameObjects.Sprite {
 				duration: 1000,
 			});
 		}
+	}
+
+	_animateCoins() {
+		const { asaValue } = this.data;
+		if (asaValue > 0) {
+			for (let i = 0; i < 12; i++) {
+				const clonedCoin = this.scene.add
+					.image(this.asaIcon.x, this.asaIcon.y, 'popup-asa-coin')
+					.setDepth(Depth)
+					.setScale(0.5);
+				const tween = this.scene.add.tween({
+					targets: [clonedCoin],
+					x: this.scene.posAsaCoinOnBalanceWidget.x + 10,
+					y: this.scene.posAsaCoinOnBalanceWidget.y + 10,
+					delay: i > 0 ? i * 80 : 0,
+					ease: Phaser.Math.Easing.Circular.Out,
+					onComplete: () => {
+						tween.stop();
+						clonedCoin.destroy();
+						if (i === 0) {
+							this.toggleMessagePopup(false);
+						}
+						// TODO: to remove
+						this.scene.balanceText.setText(new Date().getSeconds() * 1000);
+					},
+				});
+			}
+		}
+	}
+
+	vanHalen(v) {
+		game.debug.spriteInfo(lion, 32, 32);
+		return Math.sin(v * Math.PI) * 1;
 	}
 }

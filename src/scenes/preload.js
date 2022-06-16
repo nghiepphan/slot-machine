@@ -43,6 +43,19 @@ export default class PreloadScene extends Scene {
 		this.load.image('popup-gift-failed', `${ROOT_ASSET_URL}/popup/gift-failed.png`);
 		this.load.image('popup-ic-share', `${ROOT_ASSET_URL}/popup/ic-share.png`);
 
+		// load music
+		this.load.audio('music-click-spin', `${ROOT_ASSET_URL}/music/spin.wav`);
+		this.load.audio('music-playing', `${ROOT_ASSET_URL}/music/playing.wav`);
+
+		// load header button
+		this.load.image('btn-rule', `${ROOT_ASSET_URL}/btns/btn-rule.png`);
+		this.load.image('btn-ranking', `${ROOT_ASSET_URL}/btns/btn-ranking.png`);
+		this.load.image('balance-asa-coin', `${ROOT_ASSET_URL}/balances/balance-asa-coin.png`);
+		this.load.image('balance-btn-balance-deposit', `${ROOT_ASSET_URL}/balances/btn-balance-deposit.png`);
+		this.load.image('balance-bg', `${ROOT_ASSET_URL}/balances/balance-bg.png`);
+		this.load.image('btn-sound-off', `${ROOT_ASSET_URL}/btns/sounds/btn-sound-off.png`);
+		this.load.image('btn-sound-on', `${ROOT_ASSET_URL}/btns/sounds/btn-sound-on.png`);
+
 		// load symbols
 		// for (let optionIdKey in OptionId) {
 		// 	this.load.image(optionIdKey, 'https://salt.tikicdn.com/ts/ta/82/27/65/bee563ba965e42f2e49d168072c0fa3c.png');
@@ -57,10 +70,6 @@ export default class PreloadScene extends Scene {
 
 			successCallback();
 		});
-
-		// load music
-		this.load.audio('music-click-spin', `${ROOT_ASSET_URL}/music/spin.wav`);
-		this.load.audio('music-playing', `${ROOT_ASSET_URL}/music/playing.wav`);
 	}
 
 	init() {
