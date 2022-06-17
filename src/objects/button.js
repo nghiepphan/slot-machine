@@ -29,7 +29,7 @@ export default class Button extends GameObjects.Sprite {
 			this.setTexture('slot-machine-handle-pressed');
 			setTimeout(() => {
 				this.setTexture('slot-machine-handle');
-			}, 300);
+			}, 11000);
 		}
 	}
 

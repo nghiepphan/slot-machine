@@ -22,6 +22,7 @@ export default class PreloadScene extends Scene {
 		this.load.image('slot-machine-handle', `${ROOT_ASSET_URL}/btns/btn-spin.png`);
 		this.load.image('slot-machine-handle-pressed', `${ROOT_ASSET_URL}/btns/btn-spin-pressed.png`);
 		this.load.image('slot-machine-option-background', `${ROOT_ASSET_URL}/slot-machine5.png`);
+		this.load.image('slot-machine-cost-slot', `${ROOT_ASSET_URL}/slot-machine-cost-slot.png`);
 
 		// box-shadow 2 parts
 		this.load.image('reel-overlay-top', `${ROOT_ASSET_URL}/reel-overlay-top.png`);

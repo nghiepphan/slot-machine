@@ -26,11 +26,15 @@ export default class GameScene extends Scene {
 
 	_addBackground() {
 		// add main background
-		const image = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'background');
+		const backgroundX = this.cameras.main.width / 2;
+		const backgroundY = this.cameras.main.height / 2;
+		const image = this.add.image(backgroundX, backgroundY, 'background');
 		const scaleX = this.cameras.main.width / image.width;
 		const scaleY = this.cameras.main.height / image.height;
 		const scale = Math.max(scaleX, scaleY);
 		image.setScale(scale).setScrollFactor(0);
+		image.setY(image.y + 170);
+
 		// add coin on main background: asa coin, tiki ball, ...
 		const bgAsaCoin = this.add.image(4, 150, 'bg-asa-coin');
 		bgAsaCoin.setY(150 + bgAsaCoin.height / 2);
@@ -42,7 +46,7 @@ export default class GameScene extends Scene {
 		this.machine = new Machine(
 			this,
 			config.size.centerX,
-			// config.size.centerY - 100,
+			// config.size.centerY - 160,
 			config.size.centerY,
 			config.game,
 			config.payTable.payment
@@ -134,7 +138,7 @@ export default class GameScene extends Scene {
 	}
 
 	update() {
-		if (!this.machine.locked) {
+		if (this.machine && !this.machine.locked) {
 			if (this.spinButton) {
 				this.spinButton.enable();
 			}

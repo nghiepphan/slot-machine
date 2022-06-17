@@ -23,7 +23,11 @@ export default class Machine {
 
 	_addElements(scene, config) {
 		// reel - white color
-		scene.add.sprite(this.x + 64, this.y + 80, 'slot-machine-option-background', this.config.sprites.top).setOrigin(0);
+		scene.add
+			.sprite(this.x + 64, this.y + 80, 'slot-machine-option-background', this.config.sprites.top)
+			.setOrigin(0)
+			.setScale(0.5);
+
 		// slow machine box - slot-machine
 		const machineBox = scene.add
 			.sprite(this.x, this.y - 16, 'slot-machine', this.config.sprites.bottom)
@@ -62,6 +66,14 @@ export default class Machine {
 		// ranking button
 		// mute-unmute sound
 		// balance
+
+		// cost slot
+		const costSlot = scene.add
+			.sprite(0, this.y, 'slot-machine-cost-slot', this.config.sprites.top)
+			.setOrigin(0)
+			.setScale(0.5);
+		costSlot.x = this.scene.cameras.main.centerX - costSlot.displayWidth / 2;
+		costSlot.y += 49;
 	}
 
 	_fillWithReels(scene, count, config) {
