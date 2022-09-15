@@ -24,28 +24,26 @@ export default class Machine {
 	_addElements(scene, config) {
 		// reel - white color
 		scene.add
-			.sprite(this.x + 64, this.y + 80, 'slot-machine-option-background', this.config.sprites.top)
-			.setOrigin(0)
-			.setScale(0.5);
+			.sprite(this.scene.cameras.main.centerX, this.y + 88, 'slot-machine-option-background', this.config.sprites.top)
+			.setOrigin(0.5, 0);
 
 		// slow machine box - slot-machine
 		const machineBox = scene.add
-			.sprite(this.x, this.y - 16, 'slot-machine', this.config.sprites.bottom)
-			.setOrigin(0)
-			.setScale(0.5);
+			.sprite(this.scene.cameras.main.centerX, this.y - 100, 'slot-machine', this.config.sprites.bottom)
+			.setOrigin(0.5, 0);
 		this.machineBox = machineBox;
 		// render reels items
 		this._fillWithReels(scene, this.reelsCount, config);
 
 		// reel box shadow
-		scene.add
-			.sprite(this.x + 63, this.y + 81, 'reel-overlay-top', this.config.sprites.top)
-			.setOrigin(0)
-			.setScale(0.98);
-		scene.add
-			.sprite(this.x + 63, this.y + 80 + 99, 'reel-overlay-bottom', this.config.sprites.top)
-			.setOrigin(0)
-			.setScale(0.98);
+		// scene.add
+		// 	.sprite(this.x + 63, this.y + 81, 'reel-overlay-top', this.config.sprites.top)
+		// 	.setOrigin(0)
+		// 	.setScale(0.98);
+		// scene.add
+		// 	.sprite(this.x + 63, this.y + 80 + 99, 'reel-overlay-bottom', this.config.sprites.top)
+		// 	.setOrigin(0)
+		// 	.setScale(0.98);
 
 		// add bg tiki ball
 		scene.add

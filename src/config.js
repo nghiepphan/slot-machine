@@ -1,9 +1,7 @@
-import { getOptionValueAsArray } from './option-id';
-
 const isMobile = window.innerWidth >= 375;
 const headerHeight = 76;
-const screenWidth = isMobile ? window.innerWidth : 375;
-const screenHeight = isMobile ? window.innerHeight : window.innerHeight - headerHeight;
+const screenWidth = 720;
+const screenHeight = 1280;
 
 const config = {
 	phaser: {
@@ -51,7 +49,7 @@ const config = {
 			slotsCount: 3,
 			// TODO: check with condition at _move in reel component
 			// speed: 20,
-			speed: 9,
+			speed: 18,
 			// slotSize: 100,
 			slotSize: 72,
 		},

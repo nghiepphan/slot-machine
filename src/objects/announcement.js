@@ -9,9 +9,7 @@ export default class Announcement {
 		this.displayHeight = 48;
 		this.x += this.displayWidth / 2 + 25;
 		this.y -= 4;
-		const frame = this.scene.add.sprite(this.x, this.y, 'announcement-frame');
-		frame.displayWidth = this.displayWidth;
-		frame.displayHeight = this.displayHeight;
+		this.scene.add.sprite(this.x, this.y, 'announcement-frame');
 
 		// load data
 		this._loadData();
@@ -65,7 +63,7 @@ export default class Announcement {
 		const content = this.announcements.join('                    ');
 		const text = this.scene.add
 			.text(this.x + this.displayWidth / 2, this.y - 8, content, {
-				fontSize: '12px',
+				fontSize: 30,
 				color: '#DBEEFF',
 				fontFamily: 'Inter',
 				fontWeight: 600,

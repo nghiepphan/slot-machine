@@ -57,7 +57,7 @@ export default class GameScene extends Scene {
 		this.spinButton = new Button(
 			this,
 			config.size.centerX + config.game.spinButtonOffset.x,
-			config.size.centerY + config.game.spinButtonOffset.y
+			config.size.centerY + config.game.spinButtonOffset.y + 180
 		);
 		this.spinButton.on('pointerup', () => this._runMachine());
 	}

@@ -1,6 +1,5 @@
 import { Scene, Game } from 'phaser';
 import { config } from '../config';
-import { OptionId } from './../option-id';
 
 const ROOT_ASSET_URL = './assets';
 export default class PreloadScene extends Scene {
